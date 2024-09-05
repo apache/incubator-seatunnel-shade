@@ -22,17 +22,18 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>seatunnel-guava</artifactId>
-    <name>SeaTunnel : Shade : Guava</name>
+    <artifactId>seatunnel-thrift-service</artifactId>
+    <name>SeaTunnel : Shade : Thrift-Service</name>
 
     <properties>
-        <guava.version>27.0-jre</guava.version>
+        <thrift-service.version>1.0.0</thrift-service.version>
     </properties>
+
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
+            <groupId>org.apache.doris</groupId>
+            <artifactId>thrift-service</artifactId>
+            <version>${thrift-service.version}</version>
         </dependency>
     </dependencies>
 
@@ -48,7 +49,7 @@
                         </goals>
                         <phase>package</phase>
                         <configuration>
-                            <finalName>seatunnel-guava</finalName>
+                            <finalName>seatunnel-thrift-service</finalName>
                             <createSourcesJar>true</createSourcesJar>
                             <shadeSourcesContent>true</shadeSourcesContent>
                             <shadedArtifactAttached>false</shadedArtifactAttached>
@@ -65,8 +66,8 @@
                             </filters>
                             <relocations>
                                 <relocation>
-                                    <pattern>com.google</pattern>
-                                    <shadedPattern>${seatunnel.shade.package}.com.google</shadedPattern>
+                                    <pattern>org.apache.thrift</pattern>
+                                    <shadedPattern>${seatunnel.shade.package}.org.apache.thrift</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -86,7 +87,7 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>${basedir}/target/seatunnel-guava.jar</file>
+                                    <file>${basedir}/target/seatunnel-thrift-service.jar</file>
                                     <type>jar</type>
                                     <classifier>optional</classifier>
                                 </artifact>

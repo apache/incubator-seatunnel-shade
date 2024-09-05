@@ -386,8 +386,7 @@ final class SimpleConfigObject extends AbstractConfigObject implements Serializa
             ResolveSource sourceWithParent = source.pushParent(this);
 
             try {
-                SimpleConfigObject.ResolveModifier modifier =
-                        new SimpleConfigObject.ResolveModifier(context, sourceWithParent);
+                ResolveModifier modifier = new ResolveModifier(context, sourceWithParent);
                 AbstractConfigValue value = this.modifyMayThrow(modifier);
                 return ResolveResult.make(modifier.context, value).asObjectResult();
             } catch (NotPossibleToResolve | RuntimeException var6) {
